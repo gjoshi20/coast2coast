@@ -17,6 +17,7 @@ output "west_rg_name" {
 module "vnet" {
   source = "./modules/vnet"
   # Add any required variables here
+  resource_groups     = var.resource_groups
   vnet_name           = var.vnet_name
   location            = azurerm_resource_group.resource_group_name.location
   resource_group_name = azurerm_resource_group.resource_group_name.name
@@ -26,7 +27,8 @@ module "vnet" {
 
 module "subnet" {
   source = "./modules/subnet"
-  # Add any required variables here
+# Add any required variables here
+  resource_groups     = var.resource_groups
   vnet_name           = var.vnet_name
   subnet_name         = var.subnet_name
   resource_group_name = var.resource_group_name

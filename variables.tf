@@ -55,3 +55,20 @@ variable "address_prefixes" {
 }
 
 
+#variable map for created resource groups and their location
+variable "resource_groups" {
+  type = map(object({
+    name     = string
+    location = string
+  }))
+  default = {
+    east = {
+      name     = azurerm_resource_group.c2c-rg["east"].name
+      location = azurerm_resource_group.c2c-rg["east"].location
+    }
+    west = {
+      name     = azurerm_resource_group.c2c-rg["west"].name
+      location = azurerm_resource_group.c2c-rg["west"].location
+    }
+  }
+}
