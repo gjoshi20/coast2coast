@@ -1,7 +1,6 @@
 variable "regions" {
-  type        = list(string)
+  type        = map(string)
   description = "A list of operating regions"
-  default     = ["East"]
 }
 
 /*
