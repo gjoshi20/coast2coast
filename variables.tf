@@ -1,4 +1,4 @@
-variable "region" {
+variable "regions" {
   type        = list(string)
   description = "A list of operating regions"
   default     = ["East"]
@@ -7,29 +7,29 @@ variable "region" {
 
 #Variables from the vnet module
 variable "resource_group_name" {
-  type    = string
+  type        = string
   description = "The name of the Azure resource group where the VNet will be created."
 }
 
 variable "location" {
-  type    = string
+  type        = string
   description = "The Azure region where the VNet will be created."
 }
 
 variable "vnet_name" {
-  type    = string
+  type        = string
   description = "The name of the Azure VNet."
 }
 
 variable "address_space" {
-  type    = list(string)
+  type        = list(string)
   description = "The address space for the VNet in CIDR notation. Example: ['10.0.0.0/16']"
 }
 
 variable "tags" {
-  type    = map(string)
+  type        = map(string)
   description = "A map of tags to assign to the VNet."
-  default = {}
+  default     = {}
 }
 
 

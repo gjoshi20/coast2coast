@@ -1,6 +1,8 @@
 resource "azurerm_resource_group" "c2c-rg" {
-  name     = "C2C-RG"
-  location = "east us"
+  for_each = { for region in var.regions : region => region }
+
+  name     = "C2C-RG-${each.value}"
+  location = "${each.value} us"
 }
 
 module "vnet" {
@@ -16,8 +18,8 @@ module "vnet" {
 module "subnet" {
   source = "./modules/subnet"
   # Add any required variables here
-  vnet_name            = var.vnet_name
-  subnet_name          = var.subnet_name
-  resource_group_name  = var.resource_group_name
-  address_prefixes     = var.address_prefixes
+  vnet_name           = var.vnet_name
+  subnet_name         = var.subnet_name
+  resource_group_name = var.resource_group_name
+  address_prefixes    = var.address_prefixes
 }
