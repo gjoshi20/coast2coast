@@ -5,6 +5,15 @@ resource "azurerm_resource_group" "c2c-rg" {
   location = "${each.value} us"
 }
 
+# Output the names of the resource groups for east and west regions
+output "east_rg_name" {
+  value = azurerm_resource_group.c2c_rg["east"].name
+}
+
+output "west_rg_name" {
+  value = azurerm_resource_group.c2c_rg["west"] != null ? azurerm_resource_group.c2c_rg["west"].name : null
+}
+
 module "vnet" {
   source = "./modules/vnet"
   # Add any required variables here
