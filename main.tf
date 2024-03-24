@@ -24,7 +24,7 @@ output "west_rg_location" {
 module "vnet" {
   source = "./modules/vnet"
   # Add any required variables here
-  vnet_name           = "C2C-vnet-east" 
+  vnet_name           = "C2C-vnet-east"
   location            = east_rg_location
   resource_group_name = east_rg_name
   address_space       = var.address_space
@@ -34,7 +34,7 @@ module "vnet" {
 module "vnet" {
   source = "./modules/vnet"
   # Add any required variables here
-  vnet_name           = "C2C-vnet-west" 
+  vnet_name           = "C2C-vnet-west"
   location            = west_rg_location
   resource_group_name = west_rg_name
   address_space       = var.address_space
@@ -42,7 +42,7 @@ module "vnet" {
 
 module "subnet" {
   source = "./modules/subnet"
-# Add any required variables here
+  # Add any required variables here
   vnet_name           = var.vnet_name
   subnet_name         = var.subnet_name
   resource_group_name = var.resource_group_name
