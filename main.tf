@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "c2c-rg" {
-  for_each = { for region in var.regions : region => region }
+  for_each = { for idx, region in var.regions : idx => region }
 
   name     = "C2C-RG-${each.value}"
   location = "${each.value} us"
@@ -15,7 +15,7 @@ output "east_rg_location" {
 }
 
 output "west_rg_name" {
-  value = azurerm_resource_group.c2c-rg["West"].name != null ? azurerm_resource_group.c2c-rg["West"].name : null
+  value = azurerm_resource_group.c2c-rg["West"].name
 }
 
 output "west_rg_location" {
