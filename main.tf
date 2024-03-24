@@ -27,7 +27,7 @@ module "vnet" {
 
 module "subnet" {
   source = "./modules/subnet"
-# Add any required variables here
+  # Add any required variables here
   resource_groups     = var.resource_groups
   vnet_name           = var.vnet_name
   subnet_name         = var.subnet_name
