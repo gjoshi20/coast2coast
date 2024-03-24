@@ -1,4 +1,5 @@
 variable "regions" {
   type    = list(string)
-  default = ["east"]
+  default = ["east" , "west"]
 }
+
