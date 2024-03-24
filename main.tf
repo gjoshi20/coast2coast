@@ -7,44 +7,31 @@ resource "azurerm_resource_group" "c2c-rg" {
 
 # Output the names of the resource groups for east and west regions
 output "east_rg_name" {
-  value = azurerm_resource_group.c2c_rg["east"].name
+  value = azurerm_resource_group.c2c-rg["East"].name
 }
 
 output "east_rg_location" {
-  value = azurerm_resource_group.c2c_rg["east"].location
+  value = azurerm_resource_group.c2c-rg["East"].location
 }
 
 output "west_rg_name" {
-  value = azurerm_resource_group.c2c_rg["west"] != null ? azurerm_resource_group.c2c_rg["west"].name : null
+  value = azurerm_resource_group.c2c-rg["West"] != null ? azurerm_resource_group.c2c-rg["West"].name : null
 }
 
 output "west_rg_location" {
-  value = azurerm_resource_group.c2c_rg["west"].location
-}
-module "vnet" {
-  source = "./modules/vnet"
-  # Add any required variables here
-  vnet_name           = "C2C-vnet-east"
-  location            = east_rg_location
-  resource_group_name = east_rg_name
-  address_space       = var.address_space
-
+  value = azurerm_resource_group.c2c-rg["West"].location
 }
 
-module "vnet" {
-  source = "./modules/vnet"
-  # Add any required variables here
-  vnet_name           = "C2C-vnet-west"
-  location            = west_rg_location
-  resource_group_name = west_rg_name
-  address_space       = var.address_space
-}
 
-module "subnet" {
-  source = "./modules/subnet"
-  # Add any required variables here
-  vnet_name           = var.vnet_name
-  subnet_name         = var.subnet_name
-  resource_group_name = var.resource_group_name
-  address_prefixes    = var.address_prefixes
+
+/*
+Create VNets in each region
+resource "azurerm_virtual_network" "vnets" {
+  for_each = { for region in var.regions : region => region }
+
+  name                = "C2C-VNET-${each.value}"
+  location            = var.resource_groups[each.value].location
+  resource_group_name = var.resource_groups[each.value].name
+  address_space       = ["10.${each.key}.0.0/16"]
 }
+*/

@@ -18,4 +18,3 @@ variable "address_prefixes" {
   description = "The address prefixes for the subnet in CIDR notation. Example: ['10.0.1.0/24']"
 }
 
-#variable map for created resource groups and their location

@@ -4,7 +4,7 @@ variable "regions" {
   default     = ["East"]
 }
 
-
+/*
 #Variables from the vnet module
 variable "resource_group_name" {
   type        = string
@@ -19,6 +19,7 @@ variable "location" {
 variable "vnet_name" {
   type        = string
   description = "The name of the Azure VNet."
+
 }
 
 variable "address_space" {
@@ -54,4 +55,21 @@ variable "address_prefixes" {
   description = "The address prefixes for the subnet in CIDR notation. Example: ['10.0.1.0/24']"
 }
 
+locals {
+  east_rg_name     = azurerm_resource_group.c2c-rg["east"].name
+  east_rg_location = azurerm_resource_group.c2c-rg["east"].location
+  west_rg_name     = azurerm_resource_group.c2c-rg["west"].name
+  west_rg_location = azurerm_resource_group.c2c-rg["west"].location
+
+}
+
+variable "resource_groups" {
+  type = map(object({
+    name     = string
+    location = string
+  }))
+
+}
+
+*/
 
