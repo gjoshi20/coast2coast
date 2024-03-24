@@ -6,6 +6,8 @@ resource "azurerm_resource_group" "c2c-rg" {
 module "vnet" {
   source = "./modules/vnet"
   # Add any required variables here
+  
+
 }
 
 module "subnet" {
