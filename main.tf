@@ -2,7 +2,7 @@ resource "azurerm_resource_group" "c2c-rg" {
   for_each = var.regions
 
   name     = "C2C-RG-${each.value}"
-  location = "${each.value}"
+  location = each.value
 }
 
 # Output the names of the resource groups for east and west regions
