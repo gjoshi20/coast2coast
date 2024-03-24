@@ -15,7 +15,7 @@ output "east_rg_location" {
 }
 
 output "west_rg_name" {
-  value = azurerm_resource_group.c2c-rg["West"] != null ? azurerm_resource_group.c2c-rg["West"].name : null
+  value = azurerm_resource_group.c2c-rg["West"].name != null ? azurerm_resource_group.c2c-rg["West"].name : null
 }
 
 output "west_rg_location" {
