@@ -34,15 +34,15 @@ variable "tags" {
 
 
 #Variables from the subnet module
-variable "resource_group_name" {
-  type        = string
-  description = "The name of the Azure resource group where the subnet will be created."
-}
+#variable "resource_group_name" {
+#  type        = string
+#  description = "The name of the Azure resource group where the subnet will be created."
+#}
 
-variable "vnet_name" {
-  type        = string
-  description = "The name of the Azure VNet where the subnet will be created."
-}
+#variable "vnet_name" {
+#  type        = string
+#  description = "The name of the Azure VNet where the subnet will be created."
+#}
 
 variable "subnet_name" {
   type        = string
