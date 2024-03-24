@@ -4,15 +4,6 @@ variable "region" {
   default     = ["East"]
 }
 
-variable "vnet_name" {
-  type    = string
-  default = "example-vnet"
-}
-
-variable "subnet_name" {
-  type    = string
-  default = "example-subnet"
-}
 
 #Variables from the vnet module
 variable "resource_group_name" {
